@@ -1,0 +1,26 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Password reset on localhost:8000
+From: webmaster@localhost
+To: t@sfu.ca
+Date: Mon, 23 Jul 2018 07:12:46 -0000
+Message-ID: 
+ <153232996666.6667.3904264691238820208@TIANJIAOs-MacBook-Pro.local>
+
+
+You're receiving this email because you requested a password reset for your user account at localhost:8000.
+
+Please go to the following page and choose a new password:
+
+http://localhost:8000/users/reset/Mg/4y4-889481b34e2f176d6339/
+
+Your username, in case you've forgotten: ttt
+
+Thanks for using our site!
+
+The localhost:8000 team
+
+
+
+-------------------------------------------------------------------------------
