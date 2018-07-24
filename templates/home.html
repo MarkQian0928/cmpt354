@@ -3,15 +3,26 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    {% if user.is_authenticated %}
-        Hi {{ user.username }}!
-            <p>
-                <a href="{% url 'logout' %}">logout</a>
-            </p>
-    {% else %}
-        <p>You are not logged in</p>
-        <a href="{% url 'login' %}">login</a>
-        <br><br>
-        <a href="{% url 'signup' %}">signup</a>
-    {% endif %}
+	{% load static %}
+
+	<div id="navPane">
+		<ul>
+			<li id="home"><a href="#">Home</a></li>
+			{% if user.is_authenticated %}
+				<li id="logout"><a href="{% url 'logout' %}">Log Out</a></li>
+				<li id="cart"><a href="#">&nbsp</a></li>
+			{% else %}
+        		<li id="signup"><a href="{% url 'signup' %}">Sign Up</a></li>
+        		<li id="login"><a href="{% url 'login' %}">Log In</a></li>
+    		{% endif %}
+		</ul>
+	</div>
+	<div id=logo>
+		<img src="{% static "images/logo.png" %}" alt="Shoebay Logo" max-height=100%>
+	</div>
+	<h2>Begin shopping</h2>
+	<div class="button">
+		<a href="http://google.com" class="men">Men</a>
+		<a href="http://google.com" class="women">Women</a>
+	</div>
 {% endblock %}
