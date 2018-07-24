@@ -11,4 +11,5 @@ class SignUp(generic.CreateView):
 
 class UpdateInfo(generic.CreateView):
     form_class = CustomUserChangeForm
+    success_url = reverse_lazy('login')
     template_name = 'updateInfo.html'
