@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import forms as auth_forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import CustomUser
+from .models import CustomUser, Retailer
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
@@ -9,10 +9,6 @@ class CustomUserCreationForm(UserCreationForm):
         fields = ('username', 'email')
 
 class CustomUserChangeForm(UserChangeForm):
-    # username = forms.CharField(required=True)
-    # email = forms.EmailField(required=True)
-    # first_name = forms.CharField(required=False)
-    # last_name = forms.CharField(required=False)
     password = auth_forms.ReadOnlyPasswordHashField(label="Password",
         help_text=" Raw passwords are not stored, so there is no way to see "
                   "this user's password, but you can change the password "
@@ -30,3 +26,8 @@ class CustomUserChangeForm(UserChangeForm):
 
     def clean_password(self):
         return self.initial["password"]
+
+class RetailerForm(forms.ModelForm):
+    class Meta:
+        model = Retailer
+        fields = ('retailerOrNot',)

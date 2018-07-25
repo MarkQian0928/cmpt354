@@ -8,17 +8,14 @@ class CustomUser(AbstractUser):
     street = models.CharField(max_length=100, default='', blank=True)
     city = models.CharField(max_length=100, default='', blank=True)
     country = models.CharField(max_length=100, default='', blank=True)
+    retailerStatus = models.BooleanField(default=False)
     def __str__(self):
         return self.email
 
 
 
-
-
-
-# class UpdateInfo(models.Model):
-#     user = models.OneToOneField(User, related_name='user')
-#     phone = models.CharField(max_length=20, blank=True, default='')
-#     street = models.CharField(max_length=100, default='', blank=True)
-#     city = models.CharField(max_length=100, default='', blank=True)
-#     country = models.CharField(max_length=100, default='', blank=True)
+class Retailer(models.Model):
+    customUser = models.ForeignKey(CustomUser, on_delete=models.CASCADE,)
+    retailerOrNot = models.BooleanField(default=False)
+    def __str__(self):
+        return self.retailerOrNot

@@ -7,9 +7,6 @@ from django.contrib.auth.forms import UserChangeForm
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import CustomUser
 
-# class CustomUserChangeForm(UserChangeForm):
-#     class Meta(UserChangeForm.Meta):
-#         model = CustomUser
 
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
