@@ -20,7 +20,6 @@ class SignUp(generic.CreateView):
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
 
-<<<<<<< HEAD
 # class UpdateInfo(generic.CreateView):
 #     @login_required
     # user_form = CustomUserChangeForm(instance=user)
@@ -55,9 +54,3 @@ def change(request, template_name = 'update/base.html'):
     # slug_url_kwarg = 'not_slug'
 
 
-=======
-class UpdateInfo(generic.CreateView):
-    form_class = CustomUserChangeForm
-    success_url = reverse_lazy('login')
-    template_name = 'updateInfo.html'
->>>>>>> 9f7f047a4a7b98f942c7baadf01ca86af883b03b
