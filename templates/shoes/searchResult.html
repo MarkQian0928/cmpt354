@@ -3,7 +3,7 @@
 <ul>
     <table>
         <tr>
-            {% if results.price__avg %}
+            {% if results.price__max %}
                 <th>average price</th>
             {% else %} 
                 <th>ShoeID</th>
@@ -22,9 +22,9 @@
         </tr>
    
     {% for shoes in results %}
-        {% if results.price__avg %}
+        {% if results.price__max %}
             <tr>
-                <td>{{results.price__avg}}</td>
+                <td>{{results.price__max}}</td>
             </tr>
         {% else %}  
             <tr>
@@ -61,7 +61,7 @@
 
 <br><br>
 <form action="/shoes/searchResult/" method="get">
-    4. Aggregation: Avg Price:<input type="submit", value="click" name="price">
+    4. Aggregation: Max Price:<input type="submit", value="click" name="price">
 </form>
 
 <br><br>

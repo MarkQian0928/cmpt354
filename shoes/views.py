@@ -11,7 +11,7 @@ from .forms import ShoesCreationForm
 from django.shortcuts import render, HttpResponseRedirect, HttpResponse, render_to_response, redirect
 from django.urls import reverse_lazy
 
-from django.db.models import Avg, Count
+from django.db.models import Avg, Count, Max
 
 
 
@@ -38,7 +38,7 @@ def shoeQuery (request):
         # context = super().get_context_data()
         # return results
     if(request.GET.get('price')):
-        results = Shoes.objects.all().aggregate(Avg('price'))
+        results = Shoes.objects.all().aggregate(Max('price'))
     if(request.GET.get('all')):
         results = Shoes.objects.all()
     if(request.GET.get('projection')):
