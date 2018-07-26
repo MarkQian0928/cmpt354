@@ -7,4 +7,5 @@ urlpatterns = [
     # path('admin/', views.UpdateInfo.as_view(), name ='admin'),
     # path('update/', views.UpdateInfo.as_view(), name ='change'),
     url(r'^update/$', views.change, name='change'),
+   
 ]

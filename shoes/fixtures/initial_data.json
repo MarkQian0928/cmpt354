@@ -1,0 +1,123 @@
+[
+  {
+    "model": "shoes.Shoes",
+    "pk": 1,
+    "fields": {
+      "brand": "a", 
+      "category": "aa",
+      "size": "large",
+      "gender": "male",
+      "color": "red",
+      "description": "dfgdsgfwegwfgsd",
+      "price": 55,
+      "numOfAvail": 10,
+      "retailID": 1
+    }
+  },
+  {
+    "model": "shoes.Shoes",
+    "pk": 2,
+    "fields": {
+      "brand": "a", 
+      "category": "bb",
+      "size": "large",
+      "gender": "male",
+      "color": "red",
+      "description": "dfgdsgfwegwfgsd",
+      "price": 44,
+      "numOfAvail": 20,
+      "retailID": 2
+    }
+  },
+  {
+    "model": "shoes.Shoes",
+    "pk": 3,
+    "fields": {
+      "brand": "b", 
+      "category": "cc",
+      "size": "small",
+      "gender": "male",
+      "color": "red",
+      "description": "dfgdsgfwegwfgsd",
+      "price": 54,
+      "numOfAvail": 60,
+      "retailID": 2
+    }
+  },
+  {
+    "model": "shoes.Shoes",
+    "pk": 4,
+    "fields": {
+      "brand": "b", 
+      "category": "cc",
+      "size": "small",
+      "gender": "female",
+      "color": "yellow",
+      "description": "dfgdsgfwegwfgsd",
+      "price": 5,
+      "numOfAvail": 5,
+      "retailID": 3
+    }
+  },
+  {
+    "model": "shoes.Shoes",
+    "pk": 5,
+    "fields": {
+      "brand": "c", 
+      "category": "aa",
+      "size": "medium",
+      "gender": "female",
+      "color": "yellow",
+      "description": "dfgddsgfwegwfgsd",
+      "price": 15,
+      "numOfAvail": 15,
+      "retailID": 3
+    }
+  },
+  {
+    "model": "shoes.Shoes",
+    "pk": 6,
+    "fields": {
+      "brand": "d", 
+      "category": "dd",
+      "size": "small",
+      "gender": "femal",
+      "color": "yellow",
+      "description": "dfsdfgfgdsgfwegwfgsd",
+      "price": 25,
+      "numOfAvail": 52,
+      "retailID": 4
+    }
+  },
+  {
+    "model": "shoes.Shoes",
+    "pk": 7,
+    "fields": {
+      "brand": "c", 
+      "category": "cc",
+      "size": "large",
+      "gender": "femal",
+      "color": "blue",
+      "description": "dfsdfgfgdsgfwegwfgsd",
+      "price": 15,
+      "numOfAvail": 25,
+      "retailID": 5
+    }
+  },
+  {
+    "model": "shoes.Shoes",
+    "pk": 8,
+    "fields": {
+      "brand": "c", 
+      "category": "bb",
+      "size": "large",
+      "gender": "femal",
+      "color": "blue",
+      "description": "dfsdfgfgdsgfwegwfgsd",
+      "price": 25,
+      "numOfAvail": 5,
+      "retailID": 5
+    }
+  }
+]
+  

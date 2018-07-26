@@ -1,0 +1,38 @@
+<h1>Shoes</h1>
+<ul>
+    <table>
+        <tr>
+            <td>ShoeID</td>
+            <th>brand</th>
+            <th>category</th> 
+            <th>size</th>
+            <th>gender</th>
+            <th>color</th>
+            <th>description</th>
+            <th>price</th>
+            <th>numOfAvail</th>
+            <th>retaiID</th>
+        </tr>
+    {% for shoes in object_list %}
+        <tr>
+            <td>{{shoes.id}}</td>
+            <td>{{ shoes.brand }}</td>
+            <td>{{ shoes.category}}</td>
+            <td>{{shoes.size}}</td>
+            <td>{{shoes.gender}}</td>
+            <td>{{shoes.color}}</td>
+            <td>{{shoes.description}}</td>
+            <td>{{shoes.price}}</td>
+            <td>{{shoes.numOfAvail}}</td>
+            <td>{{shoes.retailID}}</td>
+
+        </tr>
+       
+        <!-- <li>{{ shoes.brand }} - {{ shoes.category }} - {{shoes.size}}</li> -->
+    {% empty %}
+
+    </table>
+   
+    <li>No Shoes yet.</li>
+{% endfor %}
+</ul>
