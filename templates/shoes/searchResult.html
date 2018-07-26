@@ -1,0 +1,99 @@
+
+<h1>Shoes after filter</h1>
+<ul>
+    <table>
+        <tr>
+            {% if results.price__avg %}
+                <th>average price</th>
+            {% else %} 
+                <th>ShoeID</th>
+                <th>brand</th>
+                <th>category</th> 
+                <th>size</th>
+                <th>gender</th>
+                <th>color</th>
+                <th>description</th>
+                <th>price</th>
+                <th>numOfAvail</th>
+                <th>retaiID</th>
+                <th>num_shoes/retailer</th>
+            {% endif %}
+
+        </tr>
+   
+    {% for shoes in results %}
+        {% if results.price__avg %}
+            <tr>
+                <td>{{results.price__avg}}</td>
+            </tr>
+        {% else %}  
+            <tr>
+                <td>{{shoes.id}}</td>
+                <td>{{ shoes.brand }}</td>
+                <td>{{ shoes.category}}</td>
+                <td>{{shoes.size}}</td>
+                <td>{{shoes.gender}}</td>
+                <td>{{shoes.color}}</td>
+                <td>{{shoes.description}}</td>
+                <td>{{shoes.price}}</td>
+                <td>{{shoes.numOfAvail}}</td>
+                <td>{{shoes.retailID}}</td>
+                <td>{{shoes.num_shoes}}</td>
+            
+            </tr>
+        {% endif %}
+    {% empty %}
+    </table>
+    <h1>No Qualified Shoes yet.</h1>
+{% endfor %}
+</ul>
+
+
+<form action="/shoes/searchResult/" method="get">
+    Projection: show only brand, size and price<input type="submit", value="click" name="projection">
+</form>
+
+<br><br>
+<form action="/shoes/searchResult/" method="get">
+    Selection: Filter by color:<input type="text" name="colorFilter" value="{{ query }}"/>
+    <input type="submit", value="click" name="color">
+</form>
+
+<br><br>
+<form action="/shoes/searchResult/" method="get">
+    Aggregation: Avg Price:<input type="submit", value="click" name="price">
+</form>
+
+<br><br>
+<form action="/shoes/searchResult/" method="get">
+    nested: count shoes for each retailer<input type="submit", value="click" name="nested">
+</form>
+
+<br><br>
+<form action="/shoes/searchResult/" method="get">
+    Show all:<input type="submit", value="click" name="all">
+</form>
+
+<br><br>
+<form action="/shoes/searchResult/" method="get">
+    Delete: by shoeID <input type="text" name="deleteShoe" value="{{ query }}"/>
+    <input type="submit", value="click" name="delete">
+</form>
+
+
+
+<!-- {% if results %}
+  {% for result in results %}
+    {{ result.id }}
+    {{ result.brand }}
+    {{ result.size }}
+  {% endfor %}
+{% else %}
+    <h3 class='error'>Please enter a valid UID</h3>
+    <form method="get" action="/search/">
+      Search Notecards:<input type="text" name="q" id="id_q" value="{{ query }}"/>
+      <input type="submit" value="Search" />
+    </form>
+{% endif %} -->
+
+

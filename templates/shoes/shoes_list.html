@@ -2,7 +2,7 @@
 <ul>
     <table>
         <tr>
-            <td>ShoeID</td>
+            <th>ShoeID</th>
             <th>brand</th>
             <th>category</th> 
             <th>size</th>
@@ -25,14 +25,36 @@
             <td>{{shoes.price}}</td>
             <td>{{shoes.numOfAvail}}</td>
             <td>{{shoes.retailID}}</td>
-
         </tr>
-       
         <!-- <li>{{ shoes.brand }} - {{ shoes.category }} - {{shoes.size}}</li> -->
     {% empty %}
-
     </table>
-   
-    <li>No Shoes yet.</li>
+    <h2>No Shoes yet.</h2>
 {% endfor %}
 </ul>
+
+<form action="/shoes/searchResult/" method="get">
+    1. Projection: show only brand, size and price<input type="submit", value="click" name="projection">
+</form>
+
+<br><br>
+<form action="/shoes/searchResult/" method="get">
+    2. Selection: Filter by color:<input type="text" name="colorFilter" value="{{ query }}"/>
+    <input type="submit", value="click" name="color">
+</form>
+
+<br><br>
+<form action="/shoes/searchResult/" method="get">
+    4. Aggregation: Avg Price:<input type="submit", value="click" name="price">
+</form>
+
+<br><br>
+<form action="/shoes/searchResult/" method="get">
+    5. nested: count shoes for each retailer<input type="submit", value="click" name="nested">
+</form>
+
+<br><br>
+<form action="/shoes/searchResult/" method="get">
+    7. Delete: by shoeID <input type="text" name="deleteShoe" value="{{ query }}"/>
+    <input type="submit", value="click" name="delete">
+</form>
