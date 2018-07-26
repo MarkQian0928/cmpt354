@@ -11,6 +11,9 @@ from .forms import ShoesCreationForm
 from django.shortcuts import render, HttpResponseRedirect, HttpResponse, render_to_response, redirect
 from django.urls import reverse_lazy
 
+from django.db.models import Avg, Count
+
+
 
 class ShoesListView(ListView):
     model = Shoes
@@ -25,6 +28,36 @@ class AddShoes(generic.CreateView):
     template_name = 'shoes/add.html'
     success_url = '/shoes/list'
     
+# class SelectView(ListView):
+#     model = Shoes
+
+def shoeQuery (request):
+    if(request.GET.get('color')):
+        temp = request.GET.get('colorFilter')
+        results = Shoes.objects.filter(color=temp)
+        # context = super().get_context_data()
+        # return results
+    if(request.GET.get('price')):
+        results = Shoes.objects.all().aggregate(Avg('price'))
+    if(request.GET.get('all')):
+        results = Shoes.objects.all()
+    if(request.GET.get('projection')):
+        results = Shoes.objects.values('brand', 'size', 'price')
+    if(request.GET.get('nested')):
+        results = Shoes.objects.all().values('retailID',).annotate(num_shoes=Count('price')).order_by('num_shoes')
+    if(request.GET.get('delete')):
+        temp = request.GET.get('deleteShoe')
+        dtemp = Shoes.objects.filter(pk=temp)
+        dtemp.delete()
+        results = Shoes.objects.all()
+    
+
+
+    return render(request, 'shoes/searchResult.html', {"results": results,})
+
+
+
+
 
 # def AddShoes(request, template_name = 'shoes/add.html'):
 #     if request.user.is_authenticated:
