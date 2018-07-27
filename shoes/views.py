@@ -38,13 +38,13 @@ def shoeQuery (request):
         # context = super().get_context_data()
         # return results
     if(request.GET.get('price')):
-        results = Shoes.objects.all().aggregate(Max('price'))
-        # results = Shoes.objects.raw('SELECT MAX(price) FROM shoes_Shoes')
+        # results = Shoes.objects.all().aggregate(Max('price'))
+        results = Shoes.objects.raw('SELECT MAX(price) as id FROM shoes_Shoes')
     if(request.GET.get('all')):
         results = Shoes.objects.raw('SELECT * FROM shoes_Shoes')
     if(request.GET.get('projection')):
         results = Shoes.objects.values('brand', 'size', 'price')
-        #  results = Shoes.objects.raw('SELECT ID, brand, size, price FROM shoes_Shoes')
+        # results = Shoes.objects.raw('SELECT id, brand, size, price FROM shoes_Shoes')
     if(request.GET.get('man')):
         # results = Shoes.objects.filter(gender='male')
         results = Shoes.objects.raw("SELECT * FROM  shoes_Shoes WHERE gender = 'male'")
