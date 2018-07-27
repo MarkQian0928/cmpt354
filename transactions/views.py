@@ -20,7 +20,14 @@ def tranDetails(request):
         temp2 = request.GET.get('cusID')
         shoeDetail = Shoes.objects.filter(pk=temp1).values('brand', 'category', 'size', 'gender', 'color',)
         cusDetail = CustomUser.objects.filter(pk=temp2).values('username', 'email')
+        # test = Shoes.objects.raw("SELECT * FROM  shoes_Shoes JOIN transactions_transactionHistory ON shoes_Shoes.id = transactions_transactionHistory.id")
+    # return render(request, 'transactions/transaction_detail.html', {"shoeDetail": test,})
     return render(request, 'transactions/transaction_detail.html', {"shoeDetail": shoeDetail, "cusDetail": cusDetail})
+
+def join(request):
+    if(request.GET.get('joincheck')):
+        test = Shoes.objects.raw("SELECT * FROM  shoes_Shoes JOIN transactions_transactionHistory ON shoes_Shoes.id = transactions_transactionHistory.id")
+    return render(request, 'transactions/tranShoes.html', {"shoeDetail": test,})
 
 def division(request):
     if(request.GET.get('DivisionCheck')):
