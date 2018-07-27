@@ -2,13 +2,12 @@
 /*Navigation Pane*/
 /*---------------*/
 #navPane ul {
-	position: fixed;
     top: 0;
     width: 100%;
     margin: 0;
     padding: 0;
     list-style: none;
-    background-color: #333;
+    background-color: #232f3e;
     overflow:hidden;
 }
 
@@ -59,61 +58,110 @@
 	background-color: #111;
 }
 
+
+/*    Searchbar    */
+#navPane #searchbar {
+	position:relative;
+	border: 3px solid #747474;
+	padding: 4px;
+	margin-left: 110px;
+	margin-right: auto;
+	margin-top: 3px;
+	height: 25px;
+	width:70%;
+	border-radius: 5px;
+	outline: none;
+	color: #9DBFAF
+}
+
+#navPane button {
+	height: 32px;
+}
+
+/*---------------*/
+/*    categories    */
+/*---------------*/
+.categories {
+	text-align: center;
+    border-bottom: 2px black solid;
+    height: 40px
+}
+.categories ul {
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+.categories li {
+    display: inline;
+}
+
+.categories li a {
+	display: inline-block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.categories li a:hover {
+    background-color: #555;
+    color: white;
+}
+
 /*---------------*/
 /*		Logo	 */
 /*---------------*/
 
-#logo img {
-    max-width: 100%;
-    max-height: 100%;
-}
-#logo {
+.logo {
 	margin-left:auto;
 	margin-right:auto;
 	padding-top: 75px;
-	width: 50%;
+	width: 30%;
 }
+
+.logo img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 
 /*---------------*/
 /*	 Main text   */
 /*---------------*/
 h2 {
-	color: white;
+	color: "525252";
 	text-align: center;
 	font-family: "Arial", sans-serif;
 }
 
 p {
-	color: white;
+	color: "525252";
 }
-/*---------------*/
-/*    Buttons    */
-/*---------------*/
 
-.button {
-	padding-top: 50px;
+/*---------------*/
+/*    Slideshow  */
+/*---------------*/
+.slideshow_container {
+	margin-top:50px;
 	text-align: center;
-    margin:auto;
-    display:block;
+}
+.slideshow {
+	display: inline-block;
+}
+.slideshow .myslides {
+	margin-left:auto;
+	margin-right:auto;
+	text-align: center;
+    max-width: 100%;
+    max-height: 100%;
 }
 
-.men {
-	padding:16px 40px;
-	text-decoration: none;
-	font-family:helvetica;
-	font-size:16px;
-	font-weight:100;
-	color:#fff;
-	background: #587286;
+.slideshow_container .left {
+	float:left;
 }
 
-.women {
-	margin-left: 30px;
-	padding:16px 32px;
-	text-decoration: none;
-	font-family:helvetica;
-	font-size:16px;
-	font-weight:100;
-	color:#fff;
-	background: #587286;
+.slideshow_container .right {
+	float:right;
 }

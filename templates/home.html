@@ -4,25 +4,49 @@
 
 {% block content %}
 	{% load static %}
-
-	<div id="navPane">
-		<ul>
-			<li id="home"><a href="#">Home</a></li>
-			{% if user.is_authenticated %}
-				<li id="logout"><a href="{% url 'logout' %}">Log Out</a></li>
-				<li id="cart"><a href="#">&nbsp</a></li>
-			{% else %}
-        		<li id="signup"><a href="{% url 'signup' %}">Sign Up</a></li>
-        		<li id="login"><a href="{% url 'login' %}">Log In</a></li>
-    		{% endif %}
-		</ul>
+	<!-- Logo image div -->
 	</div>
-	<div id=logo>
+		<div class=logo>
 		<img src="{% static "images/logo.png" %}" alt="Shoebay Logo" max-height=100%>
 	</div>
-	<h2>Begin shopping</h2>
-	<div class="button">
-		<a href="http://google.com" class="men">Men</a>
-		<a href="http://google.com" class="women">Women</a>
+
+	<!-- Shop by categories navigation bar div -->
+	<div class=categories style="margin-top:20px">
+		<ul>
+		  <li><a href="default.asp">B R A N D S</a></li>
+		  <li><a href="news.asp">R E T A I L E R S</a></li>
+		  <li><a href="contact.asp">M E N S</a></li>
+		  <li><a href="about.asp">W O M E N S</a></li>
+		  <li><a href="about.asp">S T Y L E S</a></li>
+		</ul>
 	</div>
+
+	<!-- Image sliders -->
+	<div class="slideshow_container">
+		<div class="slideshow">
+			<img class="mySlides" src="{% static "images/slide_sneakers.png" %}" >
+			<img class="mySlides" src="{% static "images/slide_heels.png" %}" >
+			<img class="mySlides" src="{% static "images/slide_delivery.png" %}" >
+			<img class="mySlides" src="{% static "images/slide_adidas.png" %}" >		
+		</div>
+	</div>
+
+
+	<script>
+		var slideIndex = 0;
+		carousel();
+
+		function carousel() {
+		    var i;
+		    var x = document.getElementsByClassName("mySlides");
+		    for (i = 0; i < x.length; i++) {
+		      x[i].style.display = "none"; 
+		    }
+		    slideIndex++;
+		    if (slideIndex > x.length) {slideIndex = 1} 
+		    x[slideIndex-1].style.display = "block"; 
+		    setTimeout(carousel, 5500); // Change image every 5.5 seconds
+		}
+	</script>
+
 {% endblock %}
