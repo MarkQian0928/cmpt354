@@ -31,6 +31,15 @@ class AddShoes(generic.CreateView):
 #     model = Shoes
 
 def shoeQuery (request):
+    # Projection
+    if(request.GET.get('projection')):
+        temp = request.GET.get('projectBy')
+        try:
+            results = Shoes.objects.values(temp)
+        except:
+            return render(request, 'shoes/searchResult.html', {"results": "",})
+        # results = Shoes.objects.raw('SELECT id, brand, size, price FROM shoes_Shoes')
+    # Nested aggregation
     if(request.GET.get('groupByBrand')):
         results = Shoes.objects.raw("SELECT id, brand, count(*) as Count FROM shoes_Shoes GROUP BY brand")
     if(request.GET.get('groupByCategory')):
@@ -48,9 +57,7 @@ def shoeQuery (request):
         results = Shoes.objects.raw('SELECT MAX(price) as id FROM shoes_Shoes')
     if(request.GET.get('all')):
         results = Shoes.objects.raw('SELECT * FROM shoes_Shoes')
-    if(request.GET.get('projection')):
-        results = Shoes.objects.values('brand', 'size', 'price')
-        # results = Shoes.objects.raw('SELECT id, brand, size, price FROM shoes_Shoes')
+
     if(request.GET.get('man')):
         # results = Shoes.objects.filter(gender='male')
         results = Shoes.objects.raw("SELECT * FROM  shoes_Shoes WHERE gender = 'male'")

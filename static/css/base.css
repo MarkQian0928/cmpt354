@@ -281,11 +281,19 @@ p {
 }
 
 
-
 /*-------------------------*/
-/* search result container */
+/* Search result container */
 /*-------------------------*/
 .searchResultContainer {
 	margin-left: 20px;
 	float:left;
+}
+
+/*-------------------------*/
+/* Search result table */
+/*-------------------------*/
+table, th, td { border-left:1px solid black; }
+
+tr:nth-child(even) {
+    background-color: #dddddd;
 }
