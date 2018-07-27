@@ -17,6 +17,7 @@
                 <th>numOfAvail</th>
                 <th>retaiID</th>
                 <th>num_shoes/retailer</th>
+                <th>BUY</th>
             {% endif %}
 
         </tr>
@@ -28,6 +29,11 @@
             </tr>
         {% else %}  
             <tr>
+                <!-- <td>
+                    <form action="#" method="get">
+                        <input type="submit", value="buy" name="buy">
+                    </form>
+                </td> -->
                 <td>{{shoes.id}}</td>
                 <td>{{ shoes.brand }}</td>
                 <td>{{ shoes.category}}</td>
@@ -39,6 +45,15 @@
                 <td>{{shoes.numOfAvail}}</td>
                 <td>{{shoes.retailID}}</td>
                 <td>{{shoes.num_shoes}}</td>
+                <td>
+                    <form action="/transactions/test" method="get">
+                        <input type="hidden", value={{shoes.id}} name ="shoeID"/>
+                        # purchase:<input type="text", value="{{ query }}" name ="num"/>
+                        <input type="hidden", value={{shoes.numOfAvail}} name ="originN"/>
+                        <input type="hidden", value={{shoes.price}} name ="price"/>
+                        <input type="submit", value="buy" name="buy">
+                    </form>
+                </td>
             
             </tr>
         {% endif %}

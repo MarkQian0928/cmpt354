@@ -2,6 +2,7 @@
 <ul>
     <table>
         <tr>
+            
             <th>ShoeID</th>
             <th>brand</th>
             <th>category</th> 
@@ -12,9 +13,11 @@
             <th>price</th>
             <th>numOfAvail</th>
             <th>retaiID</th>
+            <th>buy</th>
         </tr>
     {% for shoes in object_list %}
         <tr>
+            
             <td>{{shoes.id}}</td>
             <td>{{ shoes.brand }}</td>
             <td>{{ shoes.category}}</td>
@@ -25,6 +28,15 @@
             <td>{{shoes.price}}</td>
             <td>{{shoes.numOfAvail}}</td>
             <td>{{shoes.retailID}}</td>
+            <td>
+                <form action="/transactions/test" method="get">
+                    <input type="hidden", value={{shoes.id}} name ="shoeID"/>
+                    # purchase:<input type="text", value="{{ query }}" name ="num"/>
+                    <input type="hidden", value={{shoes.numOfAvail}} name ="originN"/>
+                    <input type="hidden", value={{shoes.price}} name ="price"/>
+                    <input type="submit", value="buy" name="buy">
+                </form>
+            </td>
         </tr>
         <!-- <li>{{ shoes.brand }} - {{ shoes.category }} - {{shoes.size}}</li> -->
     {% empty %}

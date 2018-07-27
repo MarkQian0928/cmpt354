@@ -1,0 +1,26 @@
+<h1>Shoes</h1>
+<ul>
+    <table>
+        <tr>
+            <th>numPurchased</th>
+            <th>shoeID</th>
+            <th>customerID</th> 
+            <th>price</th>
+            <th>time</th>
+        </tr>
+    {% for history in object_list %}
+        <tr>
+            <td>{{history.numPurchased}}</td>
+            <td>{{ history.shoeName }}</td>
+            <td>{{ history.customerName}}</td>
+            <td>{{history.price}}</td>
+            <td>{{history.time}}</td>
+        </tr>
+    {% empty %}
+    </table>
+    <h2>No History yet.</h2>
+{% endfor %}
+</ul>
+
+<a href="/">back to home page</a>
+

@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views import generic, View
 from django.views.generic import ListView
 from .forms import ShoesCreationForm
@@ -50,8 +49,10 @@ def shoeQuery (request):
         dtemp = Shoes.objects.filter(pk=temp)
         dtemp.delete()
         results = Shoes.objects.all()
-    
-
+        #临时放在这里等cart写完用在cart里
+    if(request.GET.get('buy')):
+        results = Shoes.objects.all()
+        return render(request, 'transactions/test.html', {"results": results,})
 
     return render(request, 'shoes/searchResult.html', {"results": results,})
 
