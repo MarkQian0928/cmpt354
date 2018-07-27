@@ -33,11 +33,13 @@ class AddShoes(generic.CreateView):
 def shoeQuery (request):
     if(request.GET.get('color')):
         temp = request.GET.get('colorFilter')
-        results = Shoes.objects.filter(color=temp)
+        # results = Shoes.objects.filter(color=temp)
+        results = Shoes.objects.raw("SELECT * FROM  shoes_Shoes WHERE color = %s", [temp])
         # context = super().get_context_data()
         # return results
     if(request.GET.get('price')):
         results = Shoes.objects.all().aggregate(Max('price'))
+        # results = Shoes.objects.raw('SELECT MAX(price) FROM shoes_Shoes')
     if(request.GET.get('all')):
         results = Shoes.objects.raw('SELECT * FROM shoes_Shoes')
     if(request.GET.get('projection')):
