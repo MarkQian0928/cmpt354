@@ -59,7 +59,7 @@ ROOT_URLCONF = 'cmpt354.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': ['templates', os.path.join(BASE_DIR, 'cart', 'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
