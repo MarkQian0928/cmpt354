@@ -65,28 +65,37 @@
 
 
 <form action="/shoes/searchResult/" method="get">
-    1. Projection: show only brand, size and price<input type="submit", value="click" name="projection">
+    Projection: show only brand, size and price<input type="submit", value="click" name="projection">
 </form>
 
 <br><br>
 <form action="/shoes/searchResult/" method="get">
-    2. Selection: Filter by color:<input type="text" name="colorFilter" value="{{ query }}"/>
+    show only man shoes<input type="submit", value="click" name="man">
+</form>
+<br><br>
+<form action="/shoes/searchResult/" method="get">
+    show only women shoes<input type="submit", value="click" name="women">
+</form>
+
+<br><br>
+<form action="/shoes/searchResult/" method="get">
+    Selection: Filter by color:<input type="text" name="colorFilter" value="{{ query }}"/>
     <input type="submit", value="click" name="color">
 </form>
 
 <br><br>
 <form action="/shoes/searchResult/" method="get">
-    4. Aggregation: Max Price:<input type="submit", value="click" name="price">
+    Aggregation: Max Price:<input type="submit", value="click" name="price">
 </form>
 
 <br><br>
 <form action="/shoes/searchResult/" method="get">
-    5. nested: count shoes for each retailer<input type="submit", value="click" name="nested">
+    nested: count shoes for each retailer<input type="submit", value="click" name="nested">
 </form>
 
 <br><br>
 <form action="/shoes/searchResult/" method="get">
-    7. Delete: by shoeID <input type="text" name="deleteShoe" value="{{ query }}"/>
+    Delete: by shoeID <input type="text" name="deleteShoe" value="{{ query }}"/>
     <input type="submit", value="click" name="delete">
 </form>
 
@@ -94,8 +103,8 @@
 <form action="/shoes/searchResult/" method="get">
     Show all:<input type="submit", value="click" name="all">
 </form>
-
-
+<br><br>
+<a href="/">back to home page</a>
 
 
 

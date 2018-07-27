@@ -42,6 +42,10 @@ def shoeQuery (request):
         results = Shoes.objects.all()
     if(request.GET.get('projection')):
         results = Shoes.objects.values('brand', 'size', 'price')
+    if(request.GET.get('man')):
+        results = Shoes.objects.filter(gender='male')
+    if(request.GET.get('women')):
+        results = Shoes.objects.filter(gender='female')
     if(request.GET.get('nested')):
         results = Shoes.objects.all().values('retailID',).annotate(num_shoes=Count('price')).order_by('num_shoes')
     if(request.GET.get('delete')):
