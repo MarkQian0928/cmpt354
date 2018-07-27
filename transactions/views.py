@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect
 from shoes.models import Shoes
+from users.models import CustomUser
 from .models import transactionHistory
 from django.views.generic import ListView
 from django.contrib.auth.models import User
@@ -9,6 +10,15 @@ def test(request):
         results = Shoes.objects.all()
 
     return render(request, 'transactions/test.html', {"results": results,})
+
+def tranDetails(request):
+    if(request.GET.get('check')):
+        temp1 = request.GET.get('shoeID')
+        temp2 = request.GET.get('cusID')
+        shoeDetail = Shoes.objects.filter(pk=temp1).values('brand', 'category', 'size', 'gender', 'color',)
+        cusDetail = CustomUser.objects.filter(pk=temp2).values('username', 'email')
+    return render(request, 'transactions/transaction_detail.html', {"shoeDetail": shoeDetail, "cusDetail": cusDetail})
+
 
 
 def tranHistory(request):

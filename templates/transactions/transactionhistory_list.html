@@ -15,6 +15,13 @@
             <td>{{ history.customerName}}</td>
             <td>{{history.price}}</td>
             <td>{{history.time}}</td>
+            <td>
+                <form action="/transactions/transaction_detail" method="get">
+                    <input type="hidden", value={{history.id}} name ="shoeID"/>
+                    <input type="hidden", value={{history.customerName}} name ="cusID"/>
+                    <input type="submit", value="checkDetails" name="check">
+                </form>
+        </td>
         </tr>
     {% empty %}
     </table>
@@ -23,4 +30,6 @@
 </ul>
 
 <a href="/">back to home page</a>
+
+
 
