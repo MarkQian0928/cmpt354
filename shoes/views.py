@@ -39,23 +39,26 @@ def shoeQuery (request):
     if(request.GET.get('price')):
         results = Shoes.objects.all().aggregate(Max('price'))
     if(request.GET.get('all')):
-        results = Shoes.objects.all()
+        results = Shoes.objects.raw('SELECT * FROM shoes_Shoes')
     if(request.GET.get('projection')):
         results = Shoes.objects.values('brand', 'size', 'price')
+        #  results = Shoes.objects.raw('SELECT ID, brand, size, price FROM shoes_Shoes')
     if(request.GET.get('man')):
-        results = Shoes.objects.filter(gender='male')
+        # results = Shoes.objects.filter(gender='male')
+        results = Shoes.objects.raw("SELECT * FROM  shoes_Shoes WHERE gender = 'male'")
     if(request.GET.get('women')):
-        results = Shoes.objects.filter(gender='female')
+        # results = Shoes.objects.filter(gender='female')
+        results = Shoes.objects.raw("SELECT * FROM  shoes_Shoes WHERE gender = 'female'")
     if(request.GET.get('nested')):
         results = Shoes.objects.all().values('retailID',).annotate(num_shoes=Count('price')).order_by('num_shoes')
     if(request.GET.get('delete')):
         temp = request.GET.get('deleteShoe')
         dtemp = Shoes.objects.filter(pk=temp)
         dtemp.delete()
-        results = Shoes.objects.all()
+        results = Shoes.objects.raw('SELECT * FROM shoes_Shoes')
         #临时放在这里等cart写完用在cart里
     if(request.GET.get('buy')):
-        results = Shoes.objects.all()
+        results = Shoes.objects.raw('SELECT * FROM shoes_Shoes')
         return render(request, 'transactions/test.html', {"results": results,})
 
     return render(request, 'shoes/searchResult.html', {"results": results,})
