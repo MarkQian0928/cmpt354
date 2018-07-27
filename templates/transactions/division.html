@@ -1,0 +1,40 @@
+<h1>division result</h1>
+<ul>
+    <table>
+        <tr>
+            <th>customerID</th>
+            <!-- <th>color</th>
+            <th>description</th>
+            <th>price</th>
+            <th>numOfAvail</th>
+            <th>retaiID</th> -->
+        </tr>
+        {% for history in results %}
+        <tr>
+            <td>{{history.customerName}}</td>
+            <!-- <td>{{ history.shoeName }}</td>
+            <td>{{ history.customerName}}</td>
+            <td>{{history.price}}</td>
+            <td>{{history.time}}</td> -->
+            <!-- {% for sh in shoeResult %}
+                    <td>{{sh.brand}}</td>
+                    <td>{{sh.category}}</td>
+                    <td>{{sh.color}}</td>
+                
+            {% endfor %} -->
+        </tr>
+        {% empty %}
+            <h2>No History yet.</h2>
+        {% endfor %}
+
+       
+    
+
+    </table>
+   
+</ul>
+
+
+<a href="/transactions/list/">back to previous page</a>
+<br><br>
+<a href="/">back to home page</a>
