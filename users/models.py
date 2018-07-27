@@ -19,3 +19,10 @@ class Retailer(models.Model):
     retailerOrNot = models.BooleanField(default=False)
     def __str__(self):
         return self.retailerOrNot
+
+class VIP(models.Model):
+    customUser = models.ForeignKey(CustomUser, on_delete=models.CASCADE,)
+    vipOrNot = models.BooleanField(default=False)
+    def __str__(self):
+        return self.vipOrNot
+    

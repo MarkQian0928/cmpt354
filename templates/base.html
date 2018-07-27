@@ -12,13 +12,15 @@
 	    <div id="navPane">
 			<ul>
 				<input id="searchbar" type="text" placeholder="Browse for shoes...">
-				<li id="home"><a href="{% url 'home' %}">Home</a></li>
+				{% if user.is_authenticated %}
+					<li id="home"><a href="/users/update">Info</a></li>
+				{% endif %}
 				{% if user.is_authenticated %}
 					<li id="logout"><a href="{% url 'logout' %}">Log Out</a></li>
 					<li id="cart"><a href="#">&nbsp</a></li>
 				{% else %}
-	        		<li id="signup"><a href="{% url 'signup' %}">Sign Up</a></li>
-	        		<li id="login"><a href="{% url 'login' %}">Log In</a></li>
+	        		<li id="signup"><a href="{% url 'signup' %}">SignUp</a></li>
+	        		<li id="login"><a href="{% url 'login' %}">LogIn</a></li>
 	    		{% endif %}
 	    		<button type="submit">Search</button>
 			</ul>

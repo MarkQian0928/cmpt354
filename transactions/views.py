@@ -5,6 +5,9 @@ from .models import transactionHistory
 from django.views.generic import ListView
 from django.contrib.auth.models import User
 
+from django.db.models import Q
+
+
 def test(request):
     if(request.GET.get('buy')):
         results = Shoes.objects.all()
@@ -18,6 +21,20 @@ def tranDetails(request):
         shoeDetail = Shoes.objects.filter(pk=temp1).values('brand', 'category', 'size', 'gender', 'color',)
         cusDetail = CustomUser.objects.filter(pk=temp2).values('username', 'email')
     return render(request, 'transactions/transaction_detail.html', {"shoeDetail": shoeDetail, "cusDetail": cusDetail})
+
+def division(request):
+    if(request.GET.get('DivisionCheck')):
+        temp1 = request.GET.get('shoe1')
+        temp2 = request.GET.get('shoe2')
+        shoe1C = transactionHistory.objects.filter(shoeName=temp1).values('customerName').distinct()
+        shoe2C = transactionHistory.objects.filter(~Q(shoeName=temp2)).values('customerName').distinct()
+        for s in shoe2C.values_list("customerName", flat=True):
+            shoe1C.exclude(customerName=s)
+    return render(request, 'transactions/division.html', {"results": shoe1C, })
+        
+
+
+
 
 
 

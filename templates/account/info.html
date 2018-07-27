@@ -3,12 +3,11 @@
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
-  <h2>Update account Information</h2>
+  <h2>account Information</h2>
   <form action="." method="post">
     {% csrf_token %}
     {{ form.as_p }}
     {{ rForm.as_p }}
-    {{vForm.as_p}}
     <button type="submit">Update</button>
   </form>
   <!-- <form action="." method="post">
@@ -16,9 +15,5 @@
     {{ rFrom.as_p }}
   </form> -->
   <br>
-  <a href="/transactions/list/">transactions</a>
-  <br>
   <a href="/">back</a>
-
 {% endblock %}
-
