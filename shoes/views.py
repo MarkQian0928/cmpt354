@@ -11,6 +11,7 @@ from django.shortcuts import render, HttpResponseRedirect, HttpResponse, render_
 from django.urls import reverse_lazy
 
 from django.db.models import Avg, Count, Max
+from django.db import connection
 
 
 
@@ -55,8 +56,11 @@ def shoeQuery (request):
         results = Shoes.objects.all().values('retailID',).annotate(num_shoes=Count('price')).order_by('num_shoes')
     if(request.GET.get('delete')):
         temp = request.GET.get('deleteShoe')
-        dtemp = Shoes.objects.filter(pk=temp)
-        dtemp.delete()
+        # dtemp = Shoes.objects.filter(pk=temp)
+        # dtemp.delete()
+        connection.cursor().execute("DELETE FROM shoes_Shoes WHERE ID= %s",[temp])
+
+        # Shoes.objects.raw("DELETE FROM shoes_Shoes WHERE ID= %s",[temp])
         results = Shoes.objects.raw('SELECT * FROM shoes_Shoes')
         #临时放在这里等cart写完用在cart里
     if(request.GET.get('buy')):
