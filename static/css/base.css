@@ -66,20 +66,42 @@
 #navPane li#account a:hover {
 	background-color: #111;
 }
-
+#navPane form {
+	display:inline;
+}
 /*    Searchbar    */
 #navPane #searchbar {
 	position:relative;
 	border: 3px solid #747474;
 	padding: 4px;
-	margin-left: 365px;
+	margin-left: 300px;
 	margin-right: auto;
 	margin-top: 3px;
+	height: 25px;
+	width:40%;
+	border-radius: 5px;
+	outline: none;
+	color: #9DBFAF
+}
+
+#navPane #submitButton {
+	height: 28px;
+}
+
+/*#navPane input[type=text] {
+	position:relative;
+	border: 3px solid #747474;
+	padding: 4px;
+	margin-right: auto;
 	height: 25px;
 	width:50%;
 	border-radius: 5px;
 	outline: none;
 	color: #9DBFAF
+}*/
+
+input[type=text]:focus {
+    border: 3px solid #555;
 }
 
 #navPane button {
@@ -226,4 +248,44 @@ p {
 
 .slideshow_container .right {
 	float:right;
+}
+
+/*---------------*/
+/* Search Options*/
+/*---------------*/
+.searchOptions {
+
+	float:left;
+}
+.searchOptions ul {
+    list-style-type: none;
+    padding: 0;
+    width: 200px;
+    background-color: #333c47;
+}
+.searchOptions .heading{
+	padding: 8px 16px;
+	font-weight: bold;
+	text-decoration: underline;
+	color: white;
+}
+.searchOptions li a {
+    display: block;
+    color: ffffff;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+.searchOptions li a:hover {
+    background-color: #232f3e;
+    color: white;
+}
+
+
+
+/*-------------------------*/
+/* search result container */
+/*-------------------------*/
+.searchResultContainer {
+	margin-left: 20px;
+	float:left;
 }

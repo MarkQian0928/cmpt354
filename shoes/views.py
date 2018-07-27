@@ -31,6 +31,12 @@ class AddShoes(generic.CreateView):
 #     model = Shoes
 
 def shoeQuery (request):
+    if(request.GET.get('groupByBrand')):
+        results = Shoes.objects.raw("SELECT id, brand, count(*) as Count FROM shoes_Shoes GROUP BY brand")
+    if(request.GET.get('groupByCategory')):
+        results = Shoes.objects.raw("SELECT id, category, count(*) as Count FROM shoes_Shoes GROUP BY category")
+    if(request.GET.get('groupByRetailer')):
+        results = Shoes.objects.raw("SELECT id, retailID, count(*) as Count FROM shoes_Shoes GROUP BY retailID")
     if(request.GET.get('color')):
         temp = request.GET.get('colorFilter')
         # results = Shoes.objects.filter(color=temp)
@@ -66,6 +72,7 @@ def shoeQuery (request):
         searchQuery = request.GET.get('searchQuery')
         searchQuery = '%' + searchQuery + '%'
         results = Shoes.objects.raw("SELECT * FROM shoes_Shoes WHERE description LIKE %s", [searchQuery])
+
 
     return render(request, 'shoes/searchResult.html', {"results": results,})
 
