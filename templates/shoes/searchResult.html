@@ -1,4 +1,10 @@
 
+
+{% extends 'base.html' %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
 <h1>Shoes after filter</h1>
 <ul>
     <table>
@@ -64,6 +70,8 @@
 </ul>
 
 
+
+
 <form action="/shoes/searchResult/" method="get">
     Projection: show only brand, size and price<input type="submit", value="click" name="projection">
 </form>
@@ -105,6 +113,14 @@
 </form>
 <br><br>
 <a href="/">back to home page</a>
+<form action="/shoes/searchResult/" method="get">
+    Selection: Filter by desc:<input type="text" name="searchQuery" value="{{ query }}"/>
+    <input type="submit", value="click" name="description">
+</form>
+<br><br>
+{% endblock %}
+
+
 
 
 

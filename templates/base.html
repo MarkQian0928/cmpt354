@@ -11,9 +11,10 @@
     <main>
 	    <div id="navPane">
 			<ul>
-				<input id="searchbar" type="text" placeholder="Browse for shoes...">
+				<li id="home"><a href="{% url 'home' %}">Home</a></li>
+				<input id="searchbar" type="text" placeholder="Search for shoes by description...">
 				{% if user.is_authenticated %}
-					<li id="home"><a href="/users/update">Info</a></li>
+					<li id="account"><a href="/users/update">Account</a></li>
 				{% endif %}
 				{% if user.is_authenticated %}
 					<li id="logout"><a href="{% url 'logout' %}">Log Out</a></li>
@@ -22,7 +23,7 @@
 	        		<li id="signup"><a href="{% url 'signup' %}">SignUp</a></li>
 	        		<li id="login"><a href="{% url 'login' %}">LogIn</a></li>
 	    		{% endif %}
-	    		<button type="submit">Search</button>
+	    		<button type="submit" onclick="location.href='/shoes/searchResult/?man=click'">Search</button>
 			</ul>
 		</div>
         {% block content %}

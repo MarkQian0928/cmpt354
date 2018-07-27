@@ -57,6 +57,10 @@ def shoeQuery (request):
     if(request.GET.get('buy')):
         results = Shoes.objects.all()
         return render(request, 'transactions/test.html', {"results": results,})
+    if(request.GET.get('description')): 
+        searchQuery = request.GET.get('searchQuery')
+        searchQuery = '%' + searchQuery + '%'
+        results = Shoes.objects.raw("SELECT * FROM shoes_Shoes WHERE description LIKE %s", [searchQuery])
 
     return render(request, 'shoes/searchResult.html', {"results": results,})
 

@@ -30,6 +30,11 @@
 #navPane li#home {
     float: left;
 }
+
+#navPane li#account {
+    float: left;
+}
+
 #navPane li#login {
     float: right;
 }
@@ -58,17 +63,20 @@
 	background-color: #111;
 }
 
+#navPane li#account a:hover {
+	background-color: #111;
+}
 
 /*    Searchbar    */
 #navPane #searchbar {
 	position:relative;
 	border: 3px solid #747474;
 	padding: 4px;
-	margin-left: 110px;
+	margin-left: 365px;
 	margin-right: auto;
 	margin-top: 3px;
 	height: 25px;
-	width:70%;
+	width:50%;
 	border-radius: 5px;
 	outline: none;
 	color: #9DBFAF
@@ -84,7 +92,7 @@
 .categories {
 	text-align: center;
     border-bottom: 2px black solid;
-    height: 40px
+    height: 40px;
 }
 .categories ul {
 
@@ -108,6 +116,60 @@
 .categories li a:hover {
     background-color: #555;
     color: white;
+}
+
+/* Dropdown button */
+.dropdown{
+	display: inline-block;
+}
+.dropdown .dropbtn {
+	display: inline-block;
+	border: none;
+	height: 40px;
+	font-size: 16px;
+	outline: none;
+	padding: 8px 16px;
+	background-color: inherit;
+	font-family: inherit; /* Important for vertical align on mobile phones */
+	margin: 0; /* Important for vertical align on mobile phones */
+}
+
+.dropbtn .arrow {
+	font-size: 10px;
+}
+
+.dropdown .dropbtn:hover {
+	background-color: #555;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+	float: none;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 /*---------------*/
