@@ -12,7 +12,9 @@
 	    <div id="navPane">
 			<ul>
 				<input id="searchbar" type="text" placeholder="Browse for shoes...">
-				<li id="home"><a href="/users/update">Info</a></li>
+				{% if user.is_authenticated %}
+					<li id="home"><a href="/users/update">Info</a></li>
+				{% endif %}
 				{% if user.is_authenticated %}
 					<li id="logout"><a href="{% url 'logout' %}">Log Out</a></li>
 					<li id="cart"><a href="#">&nbsp</a></li>
