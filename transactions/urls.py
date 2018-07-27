@@ -8,5 +8,6 @@ urlpatterns = [
     path('list/', views.TranListView.as_view(), name="tranList"),
     url(r'^transaction_detail/$', views.tranDetails, name='detailHistory'),
     url(r'^division/$', views.division, name='divisionQuery'),
+    url(r'^tranShoes/$', views.join, name='TranshoeDetail')
 
 ]
