@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import forms as auth_forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import CustomUser, Retailer
+from .models import CustomUser, Retailer, VIP
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
@@ -31,3 +31,10 @@ class RetailerForm(forms.ModelForm):
     class Meta:
         model = Retailer
         fields = ('retailerOrNot',)
+
+class VIPForm(forms.ModelForm):
+    class Meta:
+        model = VIP
+        fields = ('vipOrNot',)
+
+
