@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Shopping Cart{% endblock %}
+
+{% block content %}
+{% load static %}
+
+
+<div class="cartContainer" style="margin-top:20px;">
+    <h1>SHOPPING CART</h1>
+    <ul>
+        <table>
+            <tr>
+                <th>Transaction</th>
+                <th>Brand</th>
+                <th>Category</th> 
+                <th>Size</th>
+                <th>Gender</th>
+                <th>Color</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Retailer</th>
+            </tr>
+            {% for shoes in results %}
+                <tr>
+                    <td>{{shoes.transID}}</td>
+                    <td>{{ shoes.brand }}</td>
+                    <td>{{ shoes.category}}</td>
+                    <td>{{shoes.size}}</td>
+                    <td>{{shoes.gender}}</td>
+                    <td>{{shoes.color}}</td>
+                    <td>{{shoes.description}}</td>
+                    <td>{{shoes.price}}</td>
+                    <td>{{shoes.retailID}}</td>
+                    <td>
+                        <form action="/transactions/shoppingCart" method="get">
+                            <input type="hidden", value={{shoes.transID}} name ="itemToDeleteID"/>
+                            <input type="submit", value="Delete" name="deleteItem">
+                        </form>
+                    </td>
+                </tr>
+            {% empty %}
+                <div>Your shopping cart is empty.</div>
+            {% endfor %}
+        </table>
+    </ul>
+</div>
+
+<div>
+<a href="/shoes/searchResult?all=click/" class="backToBrowse">Go back to browse</a>
+</div>
+{% endblock %}
+
+
+

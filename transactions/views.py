@@ -6,7 +6,17 @@ from django.views.generic import ListView
 from django.contrib.auth.models import User
 
 from django.db.models import Q
+from django.db import connection
 
+def shoppingCart(request):
+    if(request.GET.get('deleteItem')):
+        temp = request.GET.get('itemToDeleteID')
+        connection.cursor().execute("DELETE FROM transactions_transactionhistory WHERE ID= %s",[temp])
+    currentUserID=request.user.pk
+    results = Shoes.objects.raw("SELECT transactions_transactionhistory.id as transID, shoes_Shoes.brand, \
+        shoes_Shoes.id, shoes_Shoes.category, shoes_Shoes.color, shoes_Shoes.description, shoes_Shoes.price, shoes_Shoes.size, transactions_transactionhistory.shoeName as shoeID  \
+        FROM  shoes_Shoes JOIN transactions_transactionHistory ON shoes_Shoes.id = transactions_transactionHistory.shoeName WHERE customerName = %s", [currentUserID])
+    return render(request, 'transactions/shoppingCart.html', {"results": results,})
 
 def test(request):
     if(request.GET.get('buy')):
@@ -70,7 +80,10 @@ def tranHistory(request):
             sSave = transactionHistory(numPurchased=int(temp2), shoeName=temp1, customerName=temp4, price =temp3,)
             sSave.save()
             temp6 = int(temp5)-int(temp2)
-            shoeUpdate = Shoes.objects.filter(pk=temp1).update(numOfAvail=temp6)
+
+
+            # shoeUpdate = Shoes.objects.filter(pk=temp1).update(numOfAvail=temp6)
+            connection.cursor().execute("UPDATE shoes_Shoes SET numOfAvail = %s WHERE id= %s", [temp6, temp1]);
             # shoeUpdate.save()
         
             results = transactionHistory.objects.filter(customerName=temp4)

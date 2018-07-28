@@ -19,13 +19,21 @@
     text-decoration: none;
 }
 
-#navPane li#cart {
+#navPane input[type=image] {
+	float: right;
+	margin-right:10px;
+	height:28px;
+	width:28px;
+	position: relative;
+	top:8px;
+}
+/*#navPane li#cart {
 	background-image: url('../images/cart_icon.png');
     background-repeat: no-repeat;
     background-position: center; 
     background-size: 50%;
     float: right;
-}
+}*/
 
 #navPane li#home {
     float: left;
@@ -289,4 +297,17 @@ table, th, td { border-left:1px solid black; }
 
 tr:nth-child(even) {
     background-color: #dddddd;
+}
+
+/*-------------------------*/
+/* Shopping cart container */
+/*-------------------------*/
+.cartContainer {
+	widows: 100%;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 4px 4px 1px #eee;
+    padding: 17px 20px 9px;
+    margin-bottom: 20px;
 }
