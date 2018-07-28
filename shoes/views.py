@@ -32,44 +32,92 @@ class AddShoes(generic.CreateView):
 #     model = Shoes
 
 def shoeQuery (request):
-    if(request.GET.get('color')):
-        temp = request.GET.get('colorFilter')
-        # results = Shoes.objects.filter(color=temp)
-        results = Shoes.objects.raw("SELECT * FROM  shoes_Shoes WHERE color = %s", [temp])
-        # context = super().get_context_data()
-        # return results
+
+    ######### Required SQL queries #########
+    ######### Projection #########
+    if(request.GET.get('projection')):
+        temp = request.GET.get('projectBy')
+        temp = mapColumnsToActualAttrNames(temp)
+        try:
+            results = Shoes.objects.values(temp)
+        except:
+            return render(request, 'shoes/searchResult.html', {"results": "",})
+    ######### Aggregation #########
     if(request.GET.get('price')):
         # results = Shoes.objects.all().aggregate(Max('price'))
         results = Shoes.objects.raw('SELECT MAX(price) as id FROM shoes_Shoes')
+    ######### Nested aggregation #########
+    if(request.GET.get('groupByBrand')):
+        results = Shoes.objects.raw("SELECT id, brand, count(*) as Count FROM shoes_Shoes GROUP BY brand")
+    if(request.GET.get('groupByCategory')):
+        results = Shoes.objects.raw("SELECT id, category, count(*) as Count FROM shoes_Shoes GROUP BY category")
+    if(request.GET.get('groupByRetailer')):
+        results = Shoes.objects.raw("SELECT id, retailID, count(*) as Count FROM shoes_Shoes GROUP BY retailID")
+    if(request.GET.get('color')):
+        temp = request.GET.get('colorFilter')
+        results = Shoes.objects.raw("SELECT * FROM  shoes_Shoes WHERE color = %s", [temp])
     if(request.GET.get('all')):
         results = Shoes.objects.raw('SELECT * FROM shoes_Shoes')
-    if(request.GET.get('projection')):
-        results = Shoes.objects.values('brand', 'size', 'price')
-        # results = Shoes.objects.raw('SELECT id, brand, size, price FROM shoes_Shoes')
-    if(request.GET.get('man')):
-        # results = Shoes.objects.filter(gender='male')
-        results = Shoes.objects.raw("SELECT * FROM  shoes_Shoes WHERE gender = 'male'")
-    if(request.GET.get('women')):
-        # results = Shoes.objects.filter(gender='female')
-        results = Shoes.objects.raw("SELECT * FROM  shoes_Shoes WHERE gender = 'female'")
-    if(request.GET.get('nested')):
-        results = Shoes.objects.all().values('retailID',).annotate(num_shoes=Count('price')).order_by('num_shoes')
+    ######### Deletion #########
     if(request.GET.get('delete')):
         temp = request.GET.get('deleteShoe')
         # dtemp = Shoes.objects.filter(pk=temp)
         # dtemp.delete()
         connection.cursor().execute("DELETE FROM shoes_Shoes WHERE ID= %s",[temp])
-
         # Shoes.objects.raw("DELETE FROM shoes_Shoes WHERE ID= %s",[temp])
         results = Shoes.objects.raw('SELECT * FROM shoes_Shoes')
-        #临时放在这里等cart写完用在cart里
+
+    #################################
+    ######### Other queries #########
+
+    #All men's shoes
+    if(request.GET.get('man')):
+        # results = Shoes.objects.filter(gender='male')
+        results = Shoes.objects.raw("SELECT * FROM  shoes_Shoes WHERE gender = 'male'")
+    #All women's shoes
+    if(request.GET.get('women')):
+        results = Shoes.objects.raw("SELECT * FROM  shoes_Shoes WHERE gender = 'female'")
+    #Ascending Price
+    if(request.GET.get('asc')):
+        results = Shoes.objects.raw("SELECT * FROM  shoes_Shoes ORDER BY price ASC")
+    #Descending Price
+    if(request.GET.get('desc')):
+        results = Shoes.objects.raw("SELECT * FROM  shoes_Shoes ORDER BY price DESC")
+    #Purchase
     if(request.GET.get('buy')):
         results = Shoes.objects.raw('SELECT * FROM shoes_Shoes')
         return render(request, 'transactions/test.html', {"results": results,})
+    # Search results
+    if(request.GET.get('description')): 
+        searchQuery = request.GET.get('searchQuery')
+        searchQuery = '%' + searchQuery + '%'
+        results = Shoes.objects.raw("SELECT * FROM shoes_Shoes WHERE description LIKE %s OR category LIKE %s OR brand LIKE %s OR color LIKE %s", [searchQuery, searchQuery, searchQuery, searchQuery])
 
     return render(request, 'shoes/searchResult.html', {"results": results,})
 
-
+def mapColumnsToActualAttrNames(str):
+        if (str.lower()== "shoeid"):
+            return "id";
+        elif (str.lower()== "brand"):
+            return "brand";
+        elif (str.lower()== "category"):
+            return "category";
+        elif (str.lower()== "size"):
+            return "size";
+        elif (str.lower()== "gender"):
+            return "gender";
+        elif (str.lower()== "color"):
+            return "color";
+        elif (str.lower()== "description"):
+            return "description";
+        elif (str.lower()== "price"):
+            return "price";
+        elif (str.lower()== "availability"):
+            return "numOfAvail";
+        elif (str.lower()== "retailer"):
+            return "retailID;"
+        else:
+            return ""
 
 
 

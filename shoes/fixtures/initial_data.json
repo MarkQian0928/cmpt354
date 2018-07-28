@@ -3,13 +3,13 @@
     "model": "shoes.Shoes",
     "pk": 1,
     "fields": {
-      "brand": "a", 
-      "category": "aa",
-      "size": "large",
+      "brand": "Nike", 
+      "category": "Sneakers",
+      "size": "8",
       "gender": "male",
       "color": "red",
-      "description": "dfgdsgfwegwfgsd",
-      "price": 55,
+      "description": "Stylish sneakers for casual wear",
+      "price": 55.60,
       "numOfAvail": 10,
       "retailID": 1
     }
@@ -18,14 +18,14 @@
     "model": "shoes.Shoes",
     "pk": 2,
     "fields": {
-      "brand": "a", 
-      "category": "bb",
-      "size": "large",
+      "brand": "Timberland", 
+      "category": "Boots",
+      "size": "10",
       "gender": "male",
-      "color": "red",
-      "description": "dfgdsgfwegwfgsd",
-      "price": 44,
-      "numOfAvail": 20,
+      "color": "brown",
+      "description": "Solid and rugged winter boots",
+      "price": 144.99,
+      "numOfAvail": 28,
       "retailID": 2
     }
   },
@@ -33,13 +33,13 @@
     "model": "shoes.Shoes",
     "pk": 3,
     "fields": {
-      "brand": "b", 
-      "category": "cc",
-      "size": "small",
+      "brand": "Vans", 
+      "category": "Sneakers",
+      "size": "9",
       "gender": "male",
       "color": "red",
-      "description": "dfgdsgfwegwfgsd",
-      "price": 54,
+      "description": "Stylish skateboarding shoes",
+      "price": 71.54,
       "numOfAvail": 60,
       "retailID": 2
     }
@@ -48,13 +48,13 @@
     "model": "shoes.Shoes",
     "pk": 4,
     "fields": {
-      "brand": "b", 
-      "category": "cc",
-      "size": "small",
+      "brand": "Vans", 
+      "category": "Sandals",
+      "size": "5",
       "gender": "female",
       "color": "yellow",
-      "description": "dfgdsgfwegwfgsd",
-      "price": 5,
+      "description": "The only flip flops you'll need this summer",
+      "price": 58.41,
       "numOfAvail": 5,
       "retailID": 3
     }
@@ -63,14 +63,14 @@
     "model": "shoes.Shoes",
     "pk": 5,
     "fields": {
-      "brand": "c", 
-      "category": "aa",
-      "size": "medium",
+      "brand": "Adidas", 
+      "category": "Sneakers",
+      "size": "6",
       "gender": "female",
       "color": "yellow",
-      "description": "dfgddsgfwegwfgsd",
-      "price": 15,
-      "numOfAvail": 15,
+      "description": "Running shoes for everyday use",
+      "price": 115,
+      "numOfAvail": 19,
       "retailID": 3
     }
   },
@@ -78,14 +78,14 @@
     "model": "shoes.Shoes",
     "pk": 6,
     "fields": {
-      "brand": "d", 
-      "category": "dd",
-      "size": "small",
-      "gender": "femal",
-      "color": "yellow",
-      "description": "dfsdfgfgdsgfwegwfgsd",
-      "price": 25,
-      "numOfAvail": 52,
+      "brand": "Aldo", 
+      "category": "Oxford Shoe",
+      "size": "11",
+      "gender": "male",
+      "color": "black",
+      "description": "Sturdy, reliable leather dress shoes",
+      "price": 105,
+      "numOfAvail": 27,
       "retailID": 4
     }
   },
@@ -93,13 +93,13 @@
     "model": "shoes.Shoes",
     "pk": 7,
     "fields": {
-      "brand": "c", 
-      "category": "cc",
-      "size": "large",
-      "gender": "femal",
-      "color": "blue",
-      "description": "dfsdfgfgdsgfwegwfgsd",
-      "price": 15,
+      "brand": "Adidas", 
+      "category": "Sandals",
+      "size": "8",
+      "gender": "male",
+      "color": "black",
+      "description": "Casual sandals for summer",
+      "price": 85,
       "numOfAvail": 25,
       "retailID": 5
     }
@@ -108,15 +108,90 @@
     "model": "shoes.Shoes",
     "pk": 8,
     "fields": {
-      "brand": "c", 
-      "category": "bb",
-      "size": "large",
-      "gender": "femal",
-      "color": "blue",
-      "description": "dfsdfgfgdsgfwegwfgsd",
-      "price": 25,
-      "numOfAvail": 5,
+      "brand": "Adidas", 
+      "category": "Tennis Shoes",
+      "size": "6",
+      "gender": "female",
+      "color": "pink",
+      "description": "Comfortable tennis shoes for her",
+      "price": 45,
+      "numOfAvail": 4,
       "retailID": 5
+    }
+  },
+  {
+    "model": "shoes.Shoes",
+    "pk": 9,
+    "fields": {
+      "brand": "Reeboks", 
+      "category": "Cleats",
+      "size": "8",
+      "gender": "male",
+      "color": "white",
+      "description": "High-performance soccer cleats",
+      "price": 75.60,
+      "numOfAvail": 4,
+      "retailID": 1
+    }
+  },
+  {
+    "model": "shoes.Shoes",
+    "pk": 10,
+    "fields": {
+      "brand": "Gucci", 
+      "category": "Heels",
+      "size": "5",
+      "gender": "female",
+      "color": "red",
+      "description": "Women's high fashion stiletto heels",
+      "price": 342.89,
+      "numOfAvail": 52,
+      "retailID": 4
+    }
+  },
+  {
+    "model": "shoes.Shoes",
+    "pk": 11,
+    "fields": {
+      "brand": "New Balance", 
+      "category": "Sneakers",
+      "size": "7",
+      "gender": "male",
+      "color": "black",
+      "description": "Comfort sneakers for jogging",
+      "price": 162.99,
+      "numOfAvail": 5,
+      "retailID": 2
+    }
+  },
+  {
+    "model": "shoes.Shoes",
+    "pk": 12,
+    "fields": {
+      "brand": "Gucci", 
+      "category": "Oxford Shoe",
+      "size": "10",
+      "gender": "male",
+      "color": "brown",
+      "description": "Men's cap toe oxford shoe",
+      "price": 242.84,
+      "numOfAvail": 3,
+      "retailID": 4
+    }
+  },
+  {
+    "model": "shoes.Shoes",
+    "pk": 13,
+    "fields": {
+      "brand": "Nike", 
+      "category": "Tennis Shoe",
+      "size": "10",
+      "gender": "male",
+      "color": "gray",
+      "description": "Comfy, athletic tennis shoes",
+      "price": 67.84,
+      "numOfAvail": 3,
+      "retailID": 4
     }
   }
 ]

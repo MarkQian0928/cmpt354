@@ -13,9 +13,9 @@
 	<!-- Shop by categories navigation bar div -->
 	<div class=categories style="margin-top:20px">
 		<ul>
-		  <li><a href="/shoes/list/">A L L</a></li>
-		  <li><a href="/shoes/searchResult/?man=click">M E N S</a></li>
-		  <li><a href="/shoes/searchResult/?women=click">W O M E N S</a></li>
+			<li><a href="/shoes/searchResult/?all=click/">A L L</a></li>
+			<li><a href="/shoes/searchResult/?man=click">M E N S</a></li>
+			<li><a href="/shoes/searchResult/?women=click">W O M E N S</a></li>
 		</ul>
 	</div>
 
@@ -28,23 +28,6 @@
 			<img class="mySlides" src="{% static "images/slide_adidas.png" %}" >		
 		</div>
 	</div>
-
-
-	<script>
-		var slideIndex = 0;
-		carousel();
-
-		function carousel() {
-		    var i;
-		    var x = document.getElementsByClassName("mySlides");
-		    for (i = 0; i < x.length; i++) {
-		      x[i].style.display = "none"; 
-		    }
-		    slideIndex++;
-		    if (slideIndex > x.length) {slideIndex = 1} 
-		    x[slideIndex-1].style.display = "block"; 
-		    setTimeout(carousel, 5500); // Change image every 5.5 seconds
-		}
-	</script>
-
+	<script type="text/javascript" src="{% static "js/carousel.js" %}"></script>
+	
 {% endblock %}

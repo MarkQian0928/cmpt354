@@ -1,110 +1,120 @@
 
-<h1>Shoes after filter</h1>
-<ul>
-    <table>
-        <tr>
-            {% if results.price__max %}
-                <th>average price</th>
-            {% else %} 
-                <th>ShoeID</th>
-                <th>brand</th>
-                <th>category</th> 
-                <th>size</th>
-                <th>gender</th>
-                <th>color</th>
-                <th>description</th>
-                <th>price</th>
-                <th>numOfAvail</th>
-                <th>retaiID</th>
-                <th>num_shoes/retailer</th>
-                <th>BUY</th>
-            {% endif %}
 
-        </tr>
-   
-    {% for shoes in results %}
-        {% if results.price__max %}
-            <tr>
-                <td>{{results.price__max}}</td>
-            </tr>
-        {% else %}  
-            <tr>
-                <!-- <td>
-                    <form action="#" method="get">
-                        <input type="submit", value="buy" name="buy">
-                    </form>
-                </td> -->
-                <td>{{shoes.id}}</td>
-                <td>{{ shoes.brand }}</td>
-                <td>{{ shoes.category}}</td>
-                <td>{{shoes.size}}</td>
-                <td>{{shoes.gender}}</td>
-                <td>{{shoes.color}}</td>
-                <td>{{shoes.description}}</td>
-                <td>{{shoes.price}}</td>
-                <td>{{shoes.numOfAvail}}</td>
-                <td>{{shoes.retailID}}</td>
-                <td>{{shoes.num_shoes}}</td>
-                <td>
-                    <form action="/transactions/test" method="get">
-                        <input type="hidden", value={{shoes.id}} name ="shoeID"/>
-                        # purchase:<input type="text", value="{{ query }}" name ="num"/>
-                        <input type="hidden", value={{shoes.numOfAvail}} name ="originN"/>
-                        <input type="hidden", value={{shoes.price}} name ="price"/>
-                        <input type="submit", value="buy" name="buy">
-                    </form>
-                </td>
-            
-            </tr>
-        {% endif %}
-    {% empty %}
-    </table>
-    <h1>No Qualified Shoes yet.</h1>
-{% endfor %}
-</ul>
+{% extends 'base.html' %}
+
+{% block title %}Search{% endblock %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static "css/searchResult.css" %}">
+
+    <div class="searchOptions">
+        <ul>
+            <li class="heading">SORT BY</li>
+            <form action="/shoes/searchResult/" method="get">
+                <input type="submit", value="ALL" name="all" style="width:100%; margin-bottom: 4px">
+            </form>
+            <form action="/shoes/searchResult/" method="get">
+                <input type="submit", value="MENS" name="man" style="width:100%; margin-bottom: 4px">
+            </form>
+            <form action="/shoes/searchResult/" method="get">
+                <input type="submit", value="WOMENS" name="women" style="width:100%; margin-bottom: 4px">
+            </form>
+            <li style="border-bottom: 1px white solid; height:10px"></li>
+            <li class="heading">PRICE</li>
+            <form action="/shoes/searchResult/" method="get">
+                <input type="submit", value="HIGHEST TO LOWEST" name="desc" style="width:100%; margin-bottom: 4px">
+            </form>
+            <form action="/shoes/searchResult/" method="get">
+                <input type="submit", value="LOWEST TO HIGHEST" name="asc" style="width:100%; margin-bottom: 4px">
+            </form>
+            <li style="border-bottom: 1px white solid; height:10px"></li>
+            <li class="heading ">PROJECTION</li>
+            <form action="/shoes/searchResult/" method="get">
+                <input type="text" name="projectBy" value="{{ query }}" style="width:130px"/>
+                <input type="submit", value="Search" name="projection">
+            </form>
+            <li class="heading">SHOE COUNT PER</li>
+            <form action="/shoes/searchResult/">
+                <input type="submit" value="Brand" name="groupByBrand">
+                <input type="submit" value="Category" name="groupByCategory">
+                <input type="submit" value="Retailer" name="groupByRetailer">
+            </form>
+        </ul>
+    </div>
+    <div class="searchResultContainer">
+        <div class="resultsTitle" style="border-bottom: 2px black solid; border-top: 2px black solid; margin-top: 20px">
+            <h1 style="font-family: Source Sans Pro;">Results</h1>
+        </div> 
+        <ul>
+            <table>
+                <tr>
+
+                    {% if results.price__max %}
+                        <th>average price</th>
+                    {% else %} 
+                        <th>ShoeID</th>
+                        <th>Brand</th>
+                        <th>Category</th> 
+                        <th>Size</th>
+                        <th>Gender</th>
+                        <th>Color</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Availability</th>
+                        <th>Retailer</th>
+
+                        <th>Group By Count</th>
+
+                        <th>BUY</th>
+                    {% endif %}
+
+                </tr>
+           
+            {% for shoes in results %}
+                {% if results.price__max %}
+                    <tr>
+                        <td>{{results.price__max}}</td>
+                    </tr>
+                {% else %}  
+                    <tr>
+                        <!-- <td>
+                            <form action="#" method="get">
+                                <input type="submit", value="buy" name="buy">
+                            </form>
+                        </td> -->
+                        <td>{{shoes.id}}</td>
+                        <td>{{ shoes.brand }}</td>
+                        <td>{{ shoes.category}}</td>
+                        <td>{{shoes.size}}</td>
+                        <td>{{shoes.gender}}</td>
+                        <td>{{shoes.color}}</td>
+                        <td>{{shoes.description}}</td>
+                        <td>{{shoes.price}}</td>
+                        <td>{{shoes.numOfAvail}}</td>
+                        <td>{{shoes.retailID}}</td>
+                        <th>{{shoes.Count}}</th>
+                        <td>
+                            <form action="/transactions/test" method="get">
+                                <input type="hidden", value={{shoes.id}} name ="shoeID"/>
+                                # purchase:<input type="text", value="{{ query }}" name ="num"/>
+                                <input type="hidden", value={{shoes.numOfAvail}} name ="originN"/>
+                                <input type="hidden", value={{shoes.price}} name ="price"/>
+                                <input type="submit", value="buy" name="buy">
+                            </form>
+                        </td>
+                    
+                    </tr>
+                {% endif %}
+            {% empty %}
+            </table>
+            <h1>No result found</h1>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
 
 
-<form action="/shoes/searchResult/" method="get">
-    Projection: show only brand, size and price<input type="submit", value="click" name="projection">
-</form>
-
-<br><br>
-<form action="/shoes/searchResult/" method="get">
-    show only man shoes<input type="submit", value="click" name="man">
-</form>
-<br><br>
-<form action="/shoes/searchResult/" method="get">
-    show only women shoes<input type="submit", value="click" name="women">
-</form>
-
-<br><br>
-<form action="/shoes/searchResult/" method="get">
-    Selection: Filter by color:<input type="text" name="colorFilter" value="{{ query }}"/>
-    <input type="submit", value="click" name="color">
-</form>
-
-<br><br>
-<form action="/shoes/searchResult/" method="get">
-    Aggregation: Max Price:<input type="submit", value="click" name="price">
-</form>
-
-<br><br>
-<form action="/shoes/searchResult/" method="get">
-    nested: count shoes for each retailer<input type="submit", value="click" name="nested">
-</form>
-
-<br><br>
-<form action="/shoes/searchResult/" method="get">
-    Delete: by shoeID <input type="text" name="deleteShoe" value="{{ query }}"/>
-    <input type="submit", value="click" name="delete">
-</form>
-
-<br><br>
-<form action="/shoes/searchResult/" method="get">
-    Show all:<input type="submit", value="click" name="all">
-</form>
-<br><br>
-<a href="/">back to home page</a>
 
 
 
