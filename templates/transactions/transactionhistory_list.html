@@ -31,6 +31,11 @@
 
 <a href="/">back to home page</a>
 <br><br>
+<form action="/transactions/divisionAll" method="get">
+    <b>Divison:</b> find all customers who bought all shoes :
+    <input type="submit", value="divisonAll" name="DivisionAll">
+</form>
+<br><br>
 <form action="/transactions/division" method="get">
     <b>Divison:</b> find all customers who bought 
     shoeID :<input type="text", value="{{ query }}" name ="shoe1"/>

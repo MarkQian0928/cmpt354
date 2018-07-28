@@ -20,7 +20,6 @@ def tranDetails(request):
         temp2 = request.GET.get('cusID')
         shoeDetail = Shoes.objects.filter(pk=temp1).values('brand', 'category', 'size', 'gender', 'color',)
         cusDetail = CustomUser.objects.filter(pk=temp2).values('username', 'email')
-        # test = Shoes.objects.raw("SELECT * FROM  shoes_Shoes JOIN transactions_transactionHistory ON shoes_Shoes.id = transactions_transactionHistory.id")
     # return render(request, 'transactions/transaction_detail.html', {"shoeDetail": test,})
     return render(request, 'transactions/transaction_detail.html', {"shoeDetail": shoeDetail, "cusDetail": cusDetail})
 
@@ -37,9 +36,24 @@ def division(request):
         shoe2C = transactionHistory.objects.filter(~Q(shoeName=temp2)).values('customerName').distinct()
         for s in shoe2C.values_list("customerName", flat=True):
             shoe1C.exclude(customerName=s)
-    return render(request, 'transactions/division.html', {"results": shoe1C, })
         
+        # test1= transactionHistory.objects.raw("SELECT shoeName FROM transactions_transactionHistory WHERE customerName =users.CustomUser.id")
+        # test2 = Shoes.objects.raw("SELECT shoes_Shoes.id from  shoes_Shoes EXCEPT %s",[test1])
+        # test =  CustomUser.objects.raw("SELECT * FROM users.CustomUser WHERE NOT EXISTS %s", [test2])
+        # test = CustomUser.objects.raw("SELECT * FROM users_CustomUser WHERE NOT EXISTS SELECT shoes_Shoes.id from  shoes_Shoes EXCEPT SELECT shoeName as id FROM transactions_transactionHistory WHERE transactions_transactionHistory.customerName =users_CustomUser.id")
+        # test1 = Shoes.objects.raw(SELECT COUNT(*) FROM shoes.Shoes)
+        
+        # test = CustomUser.objects.raw("SELECT * FROM users_CustomUser JOIN transactions_transactionHistory ON users_CustomUser.id = transactions_transactionHistory.id GROUP BY users_CustomUser.id HAVING COUNT(*)= (SELECT COUNT(*) FROM shoes_Shoes)")
+    return render(request, 'transactions/division.html', {"results": shoe1C, })
+    # return render(request, 'transactions/division.html', {"results": test, })
 
+def divisionAll(request):
+    if(request.GET.get('DivisionAll')):
+        # test2=Shoes.objects.raw("SELECT COUNT(*) FROM shoes_Shoes")
+        test = CustomUser.objects.raw("SELECT * FROM users_CustomUser INNER JOIN transactions_transactionHistory ON users_CustomUser.id = transactions_transactionHistory.customerName GROUP BY users_CustomUser.id HAVING COUNT(*)>= (SELECT COUNT(*) FROM shoes_Shoes)")
+        # test = CustomUser.objects.raw("SELECT COUNT(*) AS id FROM users_CustomUser INNER JOIN transactions_transactionHistory ON users_CustomUser.id = transactions_transactionHistory.customerName GROUP BY users_CustomUser.id")
+        # test = CustomUser.objects.raw("SELECT * FROM shoes_Shoes INNER JOIN transactions_transactionHistory ON shoes_Shoes.id = transactions_transactionHistory.shoeName GROUP BY shoes_Shoes.id")
+    return render(request, 'transactions/divisionAll.html', {"results": test,})
 
 
 
