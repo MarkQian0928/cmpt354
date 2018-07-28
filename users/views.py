@@ -12,6 +12,7 @@ from django.shortcuts import render, HttpResponseRedirect, HttpResponse, render_
 from django.forms.models import inlineformset_factory
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth.models import User
+from django.db import connection
 
 
 
@@ -24,14 +25,12 @@ class SignUp(generic.CreateView):
 
 def change(request, template_name = 'update/base.html'):
     try:
-        
         retailerID = Retailer.objects.get(customUser=request.user)
         VipID = VIP.objects.get(customUser=request.user)
-    except Retailer.DoesNotExist:
+    except:
         temp =Retailer(customUser = request.user)
         temp.save()
         retailerID = Retailer.objects.get(customUser=request.user)
-    except VIP.DoesNotExist:
         temp2 =VIP(customUser = request.user)
         temp2.save()
         VipID = VIP.objects.get(customUser=request.user)

@@ -32,8 +32,8 @@ class AddShoes(generic.CreateView):
 #     model = Shoes
 
 def shoeQuery (request):
-
     ######### Required SQL queries #########
+
     ######### Projection #########
     if(request.GET.get('projection')):
         temp = request.GET.get('projectBy')
@@ -42,10 +42,9 @@ def shoeQuery (request):
             results = Shoes.objects.values(temp)
         except:
             return render(request, 'shoes/searchResult.html', {"results": "",})
-    ######### Aggregation #########
-    if(request.GET.get('price')):
-        # results = Shoes.objects.all().aggregate(Max('price'))
-        results = Shoes.objects.raw('SELECT MAX(price) as id FROM shoes_Shoes')
+    #########    Aggregation     #########
+    if(request.GET.get('aggregation')):
+        results = Shoes.objects.raw("SELECT id, COUNT(DISTINCT brand) as Count FROM shoes_Shoes")
     ######### Nested aggregation #########
     if(request.GET.get('groupByBrand')):
         results = Shoes.objects.raw("SELECT id, brand, count(*) as Count FROM shoes_Shoes GROUP BY brand")

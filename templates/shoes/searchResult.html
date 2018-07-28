@@ -10,6 +10,10 @@
 
     <div class="searchOptions">
         <ul>
+            <li class="heading">DISTINT BRANDS COUNT</li>
+            <form action="/shoes/searchResult/" method="get">
+                <input type="submit", value="DISTINCT BRANDS COUNT" name="aggregation" style="width:100%; margin-bottom: 4px">
+            </form>
             <li class="heading">SORT BY</li>
             <form action="/shoes/searchResult/" method="get">
                 <input type="submit", value="ALL" name="all" style="width:100%; margin-bottom: 4px">
@@ -97,10 +101,10 @@
                         <td>
                             <form action="/transactions/test" method="get">
                                 <input type="hidden", value={{shoes.id}} name ="shoeID"/>
-                                # purchase:<input type="text", value="{{ query }}" name ="num"/>
+                                # purchase:<input type="text", pattern="[0-9]", required="required", value="{{ query }}" name ="num"/>
                                 <input type="hidden", value={{shoes.numOfAvail}} name ="originN"/>
                                 <input type="hidden", value={{shoes.price}} name ="price"/>
-                                <input type="submit", value="buy" name="buy">
+                                <input type="submit", value="Add to cart" name="buy">
                             </form>
                         </td>
                     

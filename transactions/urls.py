@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^division/$', views.division, name='divisionQuery'),
     url(r'^tranShoes/$', views.join, name='TranshoeDetail'),
     url(r'^divisionAll/$', views.divisionAll, name='divisionAll'),
+    url(r'^shoppingCart/$', views.shoppingCart, name='shoppingCart'),
 
 ]
