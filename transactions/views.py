@@ -40,7 +40,7 @@ def division(request):
         # test1= transactionHistory.objects.raw("SELECT shoeName FROM transactions_transactionHistory WHERE customerName =users.CustomUser.id")
         # test2 = Shoes.objects.raw("SELECT shoes_Shoes.id from  shoes_Shoes EXCEPT %s",[test1])
         # test =  CustomUser.objects.raw("SELECT * FROM users.CustomUser WHERE NOT EXISTS %s", [test2])
-        # test = CustomUser.objects.raw("SELECT * FROM users_CustomUser WHERE NOT EXISTS SELECT shoes_Shoes.id from  shoes_Shoes EXCEPT SELECT shoeName as id FROM transactions_transactionHistory WHERE transactions_transactionHistory.customerName =users_CustomUser.id")
+        # test = CustomUser.objects.raw("SELECT * FROM users_CustomUser WHERE NOT EXISTS (SELECT shoes_Shoes.id from shoes_Shoes EXCEPT (SELECT shoeName as id FROM transactions_transactionHistory WHERE transactions_transactionHistory.customerName =users_CustomUser.id")
         # test1 = Shoes.objects.raw(SELECT COUNT(*) FROM shoes.Shoes)
         
         # test = CustomUser.objects.raw("SELECT * FROM users_CustomUser JOIN transactions_transactionHistory ON users_CustomUser.id = transactions_transactionHistory.id GROUP BY users_CustomUser.id HAVING COUNT(*)= (SELECT COUNT(*) FROM shoes_Shoes)")

@@ -1,0 +1,32 @@
+<h1>division result</h1>
+<ul>
+    <table>
+        <tr>
+            <th>customerID</th>
+            <th>UserName</th>
+        </tr>
+        {% for history in results %}
+        <tr>
+            <td>{{history.id}}</td>
+            <td>{{ history.username }}</td>
+        </tr>
+        {% empty %}
+            <h2>No History yet.</h2>
+        {% endfor %}
+
+        
+        <!-- <tr>
+            <td>{{tt.value}}</td>
+        </tr> -->
+
+       
+    
+
+    </table>
+   
+</ul>
+
+
+<a href="/transactions/list/">back to previous page</a>
+<br><br>
+<a href="/">back to home page</a>

@@ -1,0 +1,29 @@
+<h1>transaction_detail</h1>
+<ul>
+    <table>
+        <tr>
+            <th>brand</th>
+            <th>category</th>
+            <th>size</th> 
+            <th>gender</th>
+            <th>color</th>
+        </tr>
+    {% for s in shoeDetail %}
+        <tr>
+            <td>{{s.brand}}</td>
+            <td>{{s.category }}</td>
+            <td>{{s.size}}</td>
+            <td>{{s.gender}}</td>
+            <td>{{s.color}}</td>
+        </td>
+        </tr>
+    {% empty %}
+    </table>
+    <h2>No History yet.</h2>
+{% endfor %}
+</ul>
+
+<a href="/transactions/list">back</a>
+
+
+
