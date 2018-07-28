@@ -10,12 +10,31 @@
 
     <div class="searchOptions">
         <ul>
-            <li class="heading">PROJECTION</li>
+            <li class="heading">SORT BY</li>
             <form action="/shoes/searchResult/" method="get">
-                <input type="text" name="projectBy" value="{{ query }}" style="width:100px"/>
+                <input type="submit", value="ALL" name="all" style="width:100%; margin-bottom: 4px">
+            </form>
+            <form action="/shoes/searchResult/" method="get">
+                <input type="submit", value="MENS" name="man" style="width:100%; margin-bottom: 4px">
+            </form>
+            <form action="/shoes/searchResult/" method="get">
+                <input type="submit", value="WOMENS" name="women" style="width:100%; margin-bottom: 4px">
+            </form>
+            <li style="border-bottom: 1px white solid; height:10px"></li>
+            <li class="heading">PRICE</li>
+            <form action="/shoes/searchResult/" method="get">
+                <input type="submit", value="HIGHEST TO LOWEST" name="desc" style="width:100%; margin-bottom: 4px">
+            </form>
+            <form action="/shoes/searchResult/" method="get">
+                <input type="submit", value="LOWEST TO HIGHEST" name="asc" style="width:100%; margin-bottom: 4px">
+            </form>
+            <li style="border-bottom: 1px white solid; height:10px"></li>
+            <li class="heading ">PROJECTION</li>
+            <form action="/shoes/searchResult/" method="get">
+                <input type="text" name="projectBy" value="{{ query }}" style="width:130px"/>
                 <input type="submit", value="Search" name="projection">
             </form>
-            <li class="heading">SHOE COUNT PER:</li>
+            <li class="heading">SHOE COUNT PER</li>
             <form action="/shoes/searchResult/">
                 <input type="submit" value="Brand" name="groupByBrand">
                 <input type="submit" value="Category" name="groupByCategory">
@@ -89,59 +108,9 @@
                 {% endif %}
             {% empty %}
             </table>
-            <h1>No Qualified Shoes yet.</h1>
+            <h1>No result found</h1>
         {% endfor %}
         </ul>
-
-
-
-
-        <form action="/shoes/searchResult/" method="get">
-            Projection: show only brand, size and price<input type="submit", value="click" name="projection">
-        </form>
-
-        <br><br>
-        <form action="/shoes/searchResult/" method="get">
-            show only man shoes<input type="submit", value="click" name="man">
-        </form>
-        <br><br>
-        <form action="/shoes/searchResult/" method="get">
-            show only women shoes<input type="submit", value="click" name="women">
-        </form>
-
-        <br><br>
-        <form action="/shoes/searchResult/" method="get">
-            Selection: Filter by color:<input type="text" name="colorFilter" value="{{ query }}"/>
-            <input type="submit", value="click" name="color">
-        </form>
-
-        <br><br>
-        <form action="/shoes/searchResult/" method="get">
-            Aggregation: Max Price:<input type="submit", value="click" name="price">
-        </form>
-
-        <br><br>
-        <form action="/shoes/searchResult/" method="get">
-            nested: count shoes for each retailer<input type="submit", value="click" name="nested">
-        </form>
-
-        <br><br>
-        <form action="/shoes/searchResult/" method="get">
-            Delete: by shoeID <input type="text" name="deleteShoe" value="{{ query }}"/>
-            <input type="submit", value="click" name="delete">
-        </form>
-
-        <br><br>
-        <form action="/shoes/searchResult/" method="get">
-            Show all:<input type="submit", value="click" name="all">
-        </form>
-        <br><br>
-        <a href="/">back to home page</a>
-        <form action="/shoes/searchResult/" method="get">
-            Selection: Filter by desc:<input type="text" name="searchQuery" value="{{ query }}"/>
-            <input type="submit", value="click" name="description">
-        </form>
-        <br><br>
     </div>
 {% endblock %}
 

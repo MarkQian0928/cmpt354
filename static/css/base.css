@@ -254,13 +254,16 @@ p {
 /* Search Options*/
 /*---------------*/
 .searchOptions {
-
+	height:100vh;
+	margin-top: 15px;
 	float:left;
+	background-color: #333c47;
 }
 .searchOptions ul {
     list-style-type: none;
     padding: 0;
     width: 200px;
+	
     background-color: #333c47;
 }
 .searchOptions .heading{
@@ -268,16 +271,6 @@ p {
 	font-weight: bold;
 	text-decoration: underline;
 	color: white;
-}
-.searchOptions li a {
-    display: block;
-    color: ffffff;
-    padding: 8px 16px;
-    text-decoration: none;
-}
-.searchOptions li a:hover {
-    background-color: #232f3e;
-    color: white;
 }
 
 
