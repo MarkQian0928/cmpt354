@@ -1,0 +1,133 @@
+/*---------------*/
+/*Navigation Pane*/
+/*---------------*/
+#navPane ul {
+	position: fixed;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: #333;
+    overflow:hidden;
+}
+
+#navPane li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#navPane li#cart {
+	background-image: url('../images/cart_icon.png');
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: 50%;
+    float: right;
+}
+
+#navPane li#home {
+    float: left;
+}
+#navPane li#login {
+    float: right;
+}
+
+#navPane li#logout {
+    float: right;
+}
+
+#navPane li#signup {
+    float: right;
+}
+
+#navPane li#logout a:hover {
+	background-color: #ff4d4d;
+}
+
+#navPane li#login a:hover {
+	background-color: #1eb350;
+}
+
+#navPane li#signup a:hover {
+	background-color: #1eb350;
+}
+
+#navPane li#home a:hover {
+	background-color: #111;
+}
+
+/*---------------*/
+/*		Logo	 */
+/*---------------*/
+
+#logo img {
+    max-width: 100%;
+    max-height: 100%;
+}
+#logo {
+	margin-left:auto;
+	margin-right:auto;
+	padding-top: 75px;
+	width: 50%;
+}
+
+/*---------------*/
+/*	 Main text   */
+/*---------------*/
+h2 {
+	color: white;
+	text-align: center;
+	font-family: "Arial", sans-serif;
+}
+
+p {
+	color: white;
+}
+/*---------------*/
+/*    Buttons    */
+/*---------------*/
+
+.button {
+	padding-top: 50px;
+	text-align: center;
+    margin:auto;
+    display:block;
+}
+
+.men {
+	padding:16px 40px;
+	text-decoration: none;
+	font-family:helvetica;
+	font-size:16px;
+	font-weight:100;
+	color:#fff;
+	background: #587286;
+}
+
+.women {
+	margin-left: 30px;
+	padding:16px 32px;
+	text-decoration: none;
+	font-family:helvetica;
+	font-size:16px;
+	font-weight:100;
+	color:#fff;
+	background: #587286;
+}
+
+/*  Cart*/
+.my_custom_table{
+	min-width: 400px;
+	font-size: 14px; 
+}
+
+.my_custom_thead{
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+	background-color: #f8f9fa!important;
+
+}
